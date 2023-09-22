@@ -1,0 +1,32 @@
+<configuration>
+
+    <property name="HOMO_LOG" value="/var/log/proj3ct.io/tg-bot/warbreonBot.log"/>
+
+    <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${HOME_LOG}</file>
+
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>/var/log/proj3ct.io/tg-bot/warbreonBot.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+                <maxFileSize>10MB</maxFileSize>
+                <totalSizeCap>5GB</totalSizeCap>
+                <maxHistory>300</maxHistory>
+            </rollingPolicy>
+
+            <encoder>
+                <pattern>%d %p %c{1 } [%t] %m%n</pattern>
+            </encoder>
+    </appender>
+
+    <logger name="io.proj3ct.VladDebil" level="debug" additivity="false">
+        <appender-ref ref="FILE-ROLLING"/>
+    </logger>
+
+    <root level="error">
+        <appender-ref ref="FILE-ROLLING"/>
+    </root>
+
+    <root level="info">
+        <appender-ref ref="FILE-ROLLING"/>
+    </root>
+
+</configuration>
