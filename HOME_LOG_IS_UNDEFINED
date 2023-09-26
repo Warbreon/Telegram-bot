@@ -1,240 +1,108 @@
-2023-09-21 18:31:52,933 ERROR org.springframework.boot.SpringApplication [main] Application run failed
-java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.classic.pattern.LoggerConverter@3daf7722 - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:174)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:167)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:145)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:133)
-	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
-	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
-	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
-	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
-	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:359)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298)
-	at io.proj3ct.VladDebil.VladDebilApplication.main(VladDebilApplication.java:10)
-Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.classic.pattern.LoggerConverter@3daf7722 - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:270)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:248)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reinitialize(LogbackLoggingSystem.java:327)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:73)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:188)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
-	... 19 common frames omitted
-	Suppressed: java.lang.NumberFormatException: For input string: "1."
-		at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-		at java.base/java.lang.Integer.parseInt(Integer.java:665)
-		at java.base/java.lang.Integer.parseInt(Integer.java:781)
-		at ch.qos.logback.classic.pattern.NamedConverter.start(NamedConverter.java:92)
-		at ch.qos.logback.core.pattern.ConverterUtil.startConverters(ConverterUtil.java:37)
-		at ch.qos.logback.core.pattern.PatternLayoutBase.start(PatternLayoutBase.java:90)
-		at ch.qos.logback.classic.encoder.PatternLayoutEncoder.start(PatternLayoutEncoder.java:28)
-		at ch.qos.logback.core.model.processor.ImplicitModelHandler.postHandleComplex(ImplicitModelHandler.java:208)
-		at ch.qos.logback.core.model.processor.ImplicitModelHandler.postHandle(ImplicitModelHandler.java:186)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:257)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:253)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:253)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.traversalLoop(DefaultProcessor.java:90)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.process(DefaultProcessor.java:106)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.processModel(GenericXMLConfigurator.java:208)
-		at org.springframework.boot.logging.logback.SpringBootJoranConfigurator.processModel(SpringBootJoranConfigurator.java:122)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:170)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:122)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:65)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.configureByResourceUrl(LogbackLoggingSystem.java:280)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:243)
-		... 24 common frames omitted
-2023-09-21 18:37:07,537 ERROR org.springframework.boot.SpringApplication [main] Application run failed
-java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.classic.pattern.LoggerConverter@3daf7722 - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:174)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:167)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:145)
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:133)
-	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
-	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
-	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
-	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
-	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
-	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
-	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:359)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298)
-	at io.proj3ct.VladDebil.VladDebilApplication.main(VladDebilApplication.java:10)
-Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
-ERROR in ch.qos.logback.classic.pattern.LoggerConverter@3daf7722 - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:270)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:248)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reinitialize(LogbackLoggingSystem.java:327)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:73)
-	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:188)
-	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
-	... 19 common frames omitted
-	Suppressed: java.lang.NumberFormatException: For input string: "1."
-		at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-		at java.base/java.lang.Integer.parseInt(Integer.java:665)
-		at java.base/java.lang.Integer.parseInt(Integer.java:781)
-		at ch.qos.logback.classic.pattern.NamedConverter.start(NamedConverter.java:92)
-		at ch.qos.logback.core.pattern.ConverterUtil.startConverters(ConverterUtil.java:37)
-		at ch.qos.logback.core.pattern.PatternLayoutBase.start(PatternLayoutBase.java:90)
-		at ch.qos.logback.classic.encoder.PatternLayoutEncoder.start(PatternLayoutEncoder.java:28)
-		at ch.qos.logback.core.model.processor.ImplicitModelHandler.postHandleComplex(ImplicitModelHandler.java:208)
-		at ch.qos.logback.core.model.processor.ImplicitModelHandler.postHandle(ImplicitModelHandler.java:186)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:257)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:253)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.secondPhaseTraverse(DefaultProcessor.java:253)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.traversalLoop(DefaultProcessor.java:90)
-		at ch.qos.logback.core.model.processor.DefaultProcessor.process(DefaultProcessor.java:106)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.processModel(GenericXMLConfigurator.java:208)
-		at org.springframework.boot.logging.logback.SpringBootJoranConfigurator.processModel(SpringBootJoranConfigurator.java:122)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:170)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:122)
-		at ch.qos.logback.core.joran.GenericXMLConfigurator.doConfigure(GenericXMLConfigurator.java:65)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.configureByResourceUrl(LogbackLoggingSystem.java:280)
-		at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:243)
-		... 24 common frames omitted
-2023-09-21 18:38:36,514 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 23356 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 18:38:36,515 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 18:38:36,515 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 18:38:37,670 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.41 seconds (process running for 1.893)
-2023-09-21 18:38:52,648 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: Мой повелитель - Привет, Мой повелитель, рад тебя видеть!
-2023-09-21 18:42:10,590 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 24384 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 18:42:10,591 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 18:42:10,592 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 18:42:11,665 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.317 seconds (process running for 1.784)
-2023-09-21 19:15:29,888 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 4516 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:15:29,889 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:15:29,890 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:15:31,186 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.551 seconds (process running for 2.031)
-2023-09-21 19:18:23,547 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 19388 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:18:23,548 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:18:23,549 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:18:24,662 ERROR i.p.V.s.TelegramBot [main] Error setting bot's command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [400] Bad Request: BOT_COMMAND_INVALID
-2023-09-21 19:18:24,800 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.513 seconds (process running for 2.013)
-2023-09-21 19:19:35,853 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 576 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:19:35,853 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:19:35,855 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:19:36,973 ERROR i.p.V.s.TelegramBot [main] Error setting bot's command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [400] Bad Request: BOT_COMMAND_INVALID
-2023-09-21 19:19:37,136 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.542 seconds (process running for 2.04)
-2023-09-21 19:19:39,250 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: Мой повелитель - Привет, Мой повелитель, рад тебя видеть!
-2023-09-21 19:20:56,599 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 21528 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:20:56,599 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:20:56,600 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:20:57,714 ERROR i.p.V.s.TelegramBot [main] Error setting bot's command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [400] Bad Request: BOT_COMMAND_INVALID
-2023-09-21 19:20:57,870 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.562 seconds (process running for 2.066)
-2023-09-21 19:21:08,622 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 16080 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:21:08,623 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:21:08,623 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:21:09,866 ERROR i.p.V.s.TelegramBot [main] Error setting bot's command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [400] Bad Request: BOT_COMMAND_INVALID
-2023-09-21 19:21:10,009 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.635 seconds (process running for 2.129)
-2023-09-21 19:21:18,604 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: ГНИДСКАЯ ПАСКУДОВЫПИЗДНУТАЯ ПРОБЛЯДЬ - Привет, ГНИДСКАЯ ПАСКУДОВЫПИЗДНУТАЯ ПРОБЛЯДЬ, рад тебя видеть!
-2023-09-21 19:21:25,386 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 20408 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:21:25,387 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:21:25,387 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:21:26,434 ERROR i.p.V.s.TelegramBot [main] Error setting bot's command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [400] Bad Request: BOT_COMMAND_INVALID
-2023-09-21 19:21:26,606 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.464 seconds (process running for 1.967)
-2023-09-21 19:21:33,640 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: Мой повелитель - Привет, Мой повелитель, рад тебя видеть!
-2023-09-21 19:25:21,158 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 1500 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:25:21,159 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:25:21,160 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:25:22,524 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.64 seconds (process running for 2.13)
-2023-09-21 19:25:54,934 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 7556 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:25:54,934 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:25:54,935 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:25:56,148 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.467 seconds (process running for 1.924)
-2023-09-21 19:28:13,730 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 10036 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:28:13,731 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:28:13,732 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:28:14,899 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.428 seconds (process running for 1.929)
-2023-09-21 19:33:36,854 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 10752 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:33:36,855 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:33:36,856 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:33:38,079 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.478 seconds (process running for 1.955)
-2023-09-21 19:34:16,017 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 20528 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:34:16,017 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:34:16,018 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:34:17,247 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.495 seconds (process running for 1.972)
-2023-09-21 19:34:20,253 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: Vlad - Вы попросили меня напомнить вам о: /remind
-Так уж и быть, Vlad, я напомню вам об этом.....
-2023-09-21 19:39:21,042 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 27088 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 19:39:21,043 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 19:39:21,043 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 19:39:22,323 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.558 seconds (process running for 2.039)
-2023-09-21 19:39:25,509 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: Vlad - Привет, Vlad, рад тебя видеть!
-2023-09-21 21:17:53,538 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 8704 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 21:17:53,539 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 21:17:53,539 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 21:17:54,665 ERROR i.p.V.s.TelegramBot [main] Error setting bot command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [404] Not Found
-2023-09-21 21:17:54,742 ERROR i.p.V.c.BotInitializer [main] Error occurred: Bot token and username can't be empty
-2023-09-21 21:17:54,748 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.459 seconds (process running for 1.971)
-2023-09-21 21:19:20,709 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 14664 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 21:19:20,710 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 21:19:20,710 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 21:19:21,689 ERROR i.p.V.s.TelegramBot [main] Error setting bot command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [404] Not Found
-2023-09-21 21:19:21,761 ERROR i.p.V.c.BotInitializer [main] Error occurred: Bot token and username can't be empty
-2023-09-21 21:19:21,768 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.31 seconds (process running for 1.794)
-2023-09-21 21:19:31,147 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 18068 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 21:19:31,147 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 21:19:31,148 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 21:19:32,182 ERROR i.p.V.s.TelegramBot [main] Error setting bot command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [404] Not Found
-2023-09-21 21:19:32,255 ERROR i.p.V.c.BotInitializer [main] Error occurred: Bot token and username can't be empty
-2023-09-21 21:19:32,263 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.355 seconds (process running for 1.797)
-2023-09-21 21:20:50,098 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 9436 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 21:20:50,099 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 21:20:50,100 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 21:20:51,123 ERROR i.p.V.s.TelegramBot [main] Error setting bot command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [404] Not Found
-2023-09-21 21:20:51,200 ERROR i.p.V.c.BotInitializer [main] Error occurred: Bot token and username can't be empty
-2023-09-21 21:20:51,208 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.347 seconds (process running for 1.798)
-2023-09-21 21:22:36,010 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 4000 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 21:22:36,010 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 21:22:36,011 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 21:22:36,997 ERROR i.p.V.s.TelegramBot [main] Error setting bot command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [404] Not Found
-2023-09-21 21:22:37,073 ERROR i.p.V.c.BotInitializer [main] Error occurred: Bot token and username can't be empty
-2023-09-21 21:22:37,079 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.315 seconds (process running for 1.772)
-2023-09-21 21:22:49,149 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 14568 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 21:22:49,150 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 21:22:49,150 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 21:22:50,118 ERROR i.p.V.s.TelegramBot [main] Error setting bot command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [404] Not Found
-2023-09-21 21:22:50,192 ERROR i.p.V.c.BotInitializer [main] Error occurred: Bot token and username can't be empty
-2023-09-21 21:22:50,198 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.285 seconds (process running for 1.74)
-2023-09-21 21:24:18,754 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 3336 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 21:24:18,755 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 21:24:18,756 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 21:24:19,813 ERROR i.p.V.s.TelegramBot [main] Error setting bot command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [404] Not Found
-2023-09-21 21:24:19,883 ERROR i.p.V.c.BotInitializer [main] Error occurred: Bot token and username can't be empty
-2023-09-21 21:24:19,889 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.381 seconds (process running for 1.922)
-2023-09-21 21:24:27,063 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 10536 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 21:24:27,064 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 21:24:27,065 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 21:24:28,107 ERROR i.p.V.s.TelegramBot [main] Error setting bot command list: Error executing org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands query: [404] Not Found
-2023-09-21 21:24:28,179 ERROR i.p.V.c.BotInitializer [main] Error occurred: Bot token and username can't be empty
-2023-09-21 21:24:28,186 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.42 seconds (process running for 1.922)
-2023-09-21 21:28:15,710 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 26332 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
-2023-09-21 21:28:15,710 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
-2023-09-21 21:28:15,711 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-09-21 21:28:16,908 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 1.443 seconds (process running for 1.928)
-2023-09-21 21:28:17,168 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: Vlad - Вы попросили меня напомнить вам о: /remind
-Так уж и быть, Vlad, я напомню вам об этом.....
-2023-09-21 21:28:17,342 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: приколдес 12 - Привет, приколдес 12, рад тебя видеть!
-2023-09-21 21:28:17,483 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: приколдес 12 - Привет, приколдес 12, рад тебя видеть!
-2023-09-21 21:28:17,642 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: Мой повелитель - Привет, Мой повелитель, рад тебя видеть!
-2023-09-21 21:28:42,425 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: приколдес 12 - Привет, приколдес 12, рад тебя видеть!
-2023-09-21 21:28:51,814 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user: приколдес 12 - Вы попросили меня напомнить вам о: /remind
-Так уж и быть, приколдес 12, я напомню вам об этом.....
+2023-09-26 00:47:24,973 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] User 505150976 asked to remind him перезапуск бд on 2023-09-26T01:00
+2023-09-26 00:47:48,266 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 00:47:48,267 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-09-26 00:47:48,269 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-09-26 00:50:11,120 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 12008 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
+2023-09-26 00:50:11,121 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
+2023-09-26 00:50:11,122 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-09-26 00:50:11,448 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-26 00:50:11,491 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 38 ms. Found 2 JPA repository interfaces.
+2023-09-26 00:50:11,794 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-26 00:50:11,836 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.2.9.Final
+2023-09-26 00:50:11,838 INFO o.h.c.Environment [main] HHH000406: Using bytecode reflection optimizer
+2023-09-26 00:50:11,995 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-26 00:50:12,094 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-26 00:50:12,106 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2023-09-26 00:50:12,239 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@667dcaad
+2023-09-26 00:50:12,241 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-09-26 00:50:12,489 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-26 00:50:12,964 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-26 00:50:12,997 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 00:50:14,196 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 3.344 seconds (process running for 3.83)
+2023-09-26 01:00:24,717 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 01:00:24,718 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-09-26 01:00:24,720 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-09-26 11:51:22,876 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 16068 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
+2023-09-26 11:51:22,877 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
+2023-09-26 11:51:22,878 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-09-26 11:51:23,334 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-26 11:51:23,376 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 37 ms. Found 2 JPA repository interfaces.
+2023-09-26 11:51:23,685 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-26 11:51:23,751 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.2.9.Final
+2023-09-26 11:51:23,753 INFO o.h.c.Environment [main] HHH000406: Using bytecode reflection optimizer
+2023-09-26 11:51:23,942 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-26 11:51:24,048 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-26 11:51:24,061 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2023-09-26 11:51:24,213 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@115dcaea
+2023-09-26 11:51:24,213 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-09-26 11:51:24,512 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-26 11:51:24,999 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-26 11:51:25,036 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 11:51:26,125 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 3.556 seconds (process running for 4.2)
+2023-09-26 11:54:24,998 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] User 5633675064 asked to remind him сказать владику что он пидарасик on 2023-09-27T13:37
+2023-09-26 13:44:04,414 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 13:44:04,415 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-09-26 13:44:04,416 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-09-26 17:04:30,033 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 13184 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
+2023-09-26 17:04:30,034 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
+2023-09-26 17:04:30,034 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-09-26 17:04:30,411 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-26 17:04:30,464 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 46 ms. Found 2 JPA repository interfaces.
+2023-09-26 17:04:30,788 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-26 17:04:30,849 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.2.9.Final
+2023-09-26 17:04:30,851 INFO o.h.c.Environment [main] HHH000406: Using bytecode reflection optimizer
+2023-09-26 17:04:31,020 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-26 17:04:31,128 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-26 17:04:31,142 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2023-09-26 17:04:31,295 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@667dcaad
+2023-09-26 17:04:31,296 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-09-26 17:04:31,592 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-26 17:04:32,106 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-26 17:04:32,145 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 17:04:33,234 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 3.473 seconds (process running for 4.096)
+2023-09-26 17:05:01,672 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] User 505150976 asked to remind him аа on 2023-09-26T17:05
+2023-09-26 17:10:25,854 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 17:10:25,855 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-09-26 17:10:25,857 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-09-26 17:10:29,174 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 7120 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
+2023-09-26 17:10:29,175 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
+2023-09-26 17:10:29,175 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-09-26 17:10:29,485 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-26 17:10:29,527 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 36 ms. Found 2 JPA repository interfaces.
+2023-09-26 17:10:29,793 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-26 17:10:29,838 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.2.9.Final
+2023-09-26 17:10:29,840 INFO o.h.c.Environment [main] HHH000406: Using bytecode reflection optimizer
+2023-09-26 17:10:29,990 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-26 17:10:30,086 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-26 17:10:30,097 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2023-09-26 17:10:30,241 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@115dcaea
+2023-09-26 17:10:30,243 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-09-26 17:10:30,493 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-26 17:10:30,994 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-26 17:10:31,027 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 17:10:32,120 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 3.181 seconds (process running for 3.688)
+2023-09-26 17:10:34,282 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] Replied to user(Id:505150976/Name:Мой повелитель): Привет, Мой повелитель, рад тебя видеть!
+2023-09-26 17:10:59,003 INFO i.p.V.s.TelegramBot [VladDebil Telegram Executor] User 505150976 asked to remind him ну я да on 2023-09-26T17:12
+2023-09-26 17:13:24,146 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 17:13:24,148 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-09-26 17:13:24,149 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-09-26 17:13:27,243 INFO i.p.V.VladDebilApplication [main] Starting VladDebilApplication using Java 20.0.1 with PID 26828 (C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil\target\classes started by Vlad in C:\Users\Vlad\Documents\JAVA PROJECTS\VladDebil)
+2023-09-26 17:13:27,244 DEBUG i.p.V.VladDebilApplication [main] Running with Spring Boot v3.1.4, Spring v6.0.12
+2023-09-26 17:13:27,245 INFO i.p.V.VladDebilApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-09-26 17:13:27,559 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-26 17:13:27,602 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 37 ms. Found 2 JPA repository interfaces.
+2023-09-26 17:13:27,884 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-26 17:13:27,923 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.2.9.Final
+2023-09-26 17:13:27,924 INFO o.h.c.Environment [main] HHH000406: Using bytecode reflection optimizer
+2023-09-26 17:13:28,078 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-26 17:13:28,170 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-26 17:13:28,180 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2023-09-26 17:13:28,315 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5974b233
+2023-09-26 17:13:28,316 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-09-26 17:13:28,552 INFO o.h.b.i.BytecodeProviderInitiator [main] HHH000021: Bytecode provider name : bytebuddy
+2023-09-26 17:13:29,034 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-26 17:13:29,071 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 17:13:30,116 INFO i.p.V.VladDebilApplication [main] Started VladDebilApplication in 3.11 seconds (process running for 3.607)
+2023-09-26 18:00:37,802 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-09-26 18:00:37,803 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-09-26 18:00:37,805 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
