@@ -1,9 +1,10 @@
 package io.proj3ct.VladDebil.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name="usersDataTable")
 public class User {
@@ -14,6 +15,8 @@ public class User {
     private String lastName;
     private String userName;
     private Timestamp registeredAt;
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reminder> reminderList = new ArrayList<>();
 
     public Long getChatId() {
         return chatId;
@@ -53,6 +56,24 @@ public class User {
 
     public void setRegisteredAt(Timestamp registeredAt) {
         this.registeredAt = registeredAt;
+    }
+
+    public List<Reminder> getReminderList() {
+        return reminderList;
+    }
+
+    public void setReminderList(List<Reminder> reminderList) {
+        this.reminderList = reminderList;
+    }
+
+    public void addReminder(Reminder reminder){
+        reminderList.add(reminder);
+        reminder.setUser(this);
+    }
+
+    public void removeReminder(Reminder reminder){
+        reminderList.remove(reminder);
+        reminder.setUser(null);
     }
 
     @Override

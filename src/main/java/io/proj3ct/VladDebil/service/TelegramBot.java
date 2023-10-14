@@ -2,6 +2,7 @@ package io.proj3ct.VladDebil.service;
 
 import io.proj3ct.VladDebil.config.BotConfig;
 import io.proj3ct.VladDebil.model.entity.Reminder;
+import io.proj3ct.VladDebil.model.entity.User;
 import io.proj3ct.VladDebil.model.repository.ReminderRepository;
 import io.proj3ct.VladDebil.model.repository.UserRepository;
 import io.proj3ct.VladDebil.service.commands.StartCommandHandler;
@@ -37,6 +38,9 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final Map<Long, ReminderState> userStateMap = new HashMap<>();
     private final Map<Long, String> userReminderTextMap = new HashMap<>();
     final BotConfig config;
+//    private final Map<String, CommandHandler> commandHandlerMap = new HashMap<>();
+//    commandHandlerMap.put("/start", new StartCommandHandler());
+//    commandHandlerMap.put("/r", new ReminderCommandHandler());
 
     public TelegramBot(BotConfig config) {
         this.config = config;
@@ -116,22 +120,30 @@ public class TelegramBot extends TelegramLongPollingBot {
                 try {
                     dateTime = LocalDateTime.parse(message, formatter);
 
-                    Reminder reminder = new Reminder();
-                    reminder.setChatId(chatId);
-                    reminder.setTextToRemind(userReminderTextMap.get(chatId));
-                    reminder.setReminderTime(dateTime);
+                    User user  = userRepository.findById(chatId).orElse(null);
 
-                    reminderRepository.save(reminder);
+                    if(user != null) {
+                        //Hibernate.initialize(user.getReminderList());
+
+                        Reminder reminder = new Reminder();
+                        reminder.setUser(user);
+                        reminder.setTextToRemind(userReminderTextMap.get(chatId));
+                        reminder.setReminderTime(dateTime);
+
+                        user.addReminder(reminder);
+
+                        reminderRepository.save(reminder);
+                    }
 
                     userStateMap.put(chatId, ReminderState.COMPLETED);
 
                     log.info("User " + chatId + " asked to remind him " + userReminderTextMap.get(chatId) + " on " + dateTime);
 
                     userReminderTextMap.remove(chatId);
+                    userStateMap.remove(chatId);
 
                     sendMessage(chatId, "Хорошо, я напомню вам об этом......");
 
-                    userStateMap.remove(chatId);
                 } catch (DateTimeParseException e) {
                     sendMessage(chatId, "Неверный формат даты, надо ввести дату в формате dd.MM.yyyy HH:mm");
                 }
@@ -155,7 +167,5 @@ public class TelegramBot extends TelegramLongPollingBot {
             log.error("Error occurred: " + e.getMessage());
         }
     }
-
-
 
 }

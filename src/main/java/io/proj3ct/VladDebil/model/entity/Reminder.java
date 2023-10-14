@@ -1,7 +1,6 @@
 package io.proj3ct.VladDebil.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -10,16 +9,20 @@ import java.util.Objects;
 public class Reminder {
 
     @Id
-    private Long chatId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String textToRemind;
     private LocalDateTime reminderTime;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "chat_id", referencedColumnName = "chatId")
+    private User user;
 
-    public Long getChatId() {
-        return chatId;
+    public Long getId() {
+        return id;
     }
 
-    public void setChatId(Long chatId) {
-        this.chatId = chatId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTextToRemind() {
@@ -38,27 +41,34 @@ public class Reminder {
         this.reminderTime = reminderTime;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reminder reminder = (Reminder) o;
-        return Objects.equals(chatId, reminder.chatId) &&
-                Objects.equals(textToRemind, reminder.textToRemind) &&
-                Objects.equals(reminderTime, reminder.reminderTime);
+        return Objects.equals(id, reminder.id) && Objects.equals(textToRemind, reminder.textToRemind) && Objects.equals(reminderTime, reminder.reminderTime) && Objects.equals(user, reminder.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chatId, textToRemind, reminderTime);
+        return Objects.hash(id, textToRemind, reminderTime, user);
     }
 
     @Override
     public String toString() {
         return "Reminder{" +
-                "chatId=" + chatId +
+                "id=" + id +
                 ", textToRemind='" + textToRemind + '\'' +
                 ", reminderTime=" + reminderTime +
+                ", user=" + user +
                 '}';
     }
 }
