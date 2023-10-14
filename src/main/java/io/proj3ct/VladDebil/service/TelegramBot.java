@@ -1,23 +1,21 @@
 package io.proj3ct.VladDebil.service;
 
 import io.proj3ct.VladDebil.config.BotConfig;
-import io.proj3ct.VladDebil.model.Reminder;
-import io.proj3ct.VladDebil.model.ReminderRepository;
-import io.proj3ct.VladDebil.model.User;
-import io.proj3ct.VladDebil.model.UserRepository;
+import io.proj3ct.VladDebil.model.entity.Reminder;
+import io.proj3ct.VladDebil.model.repository.ReminderRepository;
+import io.proj3ct.VladDebil.model.repository.UserRepository;
+import io.proj3ct.VladDebil.service.commands.StartCommandHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScopeDefault;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -34,6 +32,8 @@ public class TelegramBot extends TelegramLongPollingBot {
     private UserRepository userRepository;
     @Autowired
     private ReminderRepository reminderRepository;
+    @Autowired
+    private StartCommandHandler startCommandHandler;
     private final Map<Long, ReminderState> userStateMap = new HashMap<>();
     private final Map<Long, String> userReminderTextMap = new HashMap<>();
     final BotConfig config;
@@ -74,8 +74,12 @@ public class TelegramBot extends TelegramLongPollingBot {
             if (currentState == null) {
                 switch (messageText) {
                     case "/start":
-                        registerUser(update.getMessage());
-                        startCommandReceived(chatId, update.getMessage().getChat().getFirstName());
+                        SendMessage startMessage = startCommandHandler.handleCommand(update.getMessage());
+                        try {
+                            execute(startMessage);
+                        } catch (TelegramApiException e) {
+                            log.error("Error occurred while executing start message: " + e.getMessage());
+                        }
                         break;
                     case "/r":
                         userStateMap.put(chatId, ReminderState.AWAITING_TEXT);
@@ -83,8 +87,6 @@ public class TelegramBot extends TelegramLongPollingBot {
                         break;
                     case "спасибо":
                         sendMessage(chatId, "Не за что!");
-//                    default:
-//                        sendMessage(chatId, "А че это ты пытаешься сделать, а?");
                 }
             } else {
                 remindCommandReceived(chatId, messageText);
@@ -92,43 +94,6 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         }
 
-    }
-
-    private void registerUser(Message message) {
-        if (userRepository.findById(message.getChatId()).isEmpty()) {
-
-            var chatId = message.getChatId();
-            var chat = message.getChat();
-
-            User user = new User();
-
-            user.setChatId(message.getChatId());
-            user.setFirstName(chat.getFirstName());
-            user.setLastName(chat.getLastName());
-            user.setUserName(chat.getUserName());
-            user.setRegisteredAt(new Timestamp(System.currentTimeMillis()));
-
-            userRepository.save(user);
-            log.info("User saved: " + user);
-        }
-    }
-
-    private void startCommandReceived(long chatId, String name) {
-
-        if (chatId == 505150976) {
-            name = "Мой повелитель";
-        } else if (chatId == 1185140651) {
-            name = "Настенька<3";
-        } else if (chatId == 5633675064L) {
-            name = "Лил поплавок";
-        } else if (chatId == 1822106957) {
-            name = "Шикманчело";
-        }
-
-        String answer = "Привет, " + name + ", рад тебя видеть!";
-        log.info("Replied to user(Id:" + chatId + "/Name:" + name + "): " + answer);
-
-        sendMessage(chatId, answer);
     }
 
     private void remindCommandReceived(long chatId, String message) {
@@ -190,5 +155,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             log.error("Error occurred: " + e.getMessage());
         }
     }
+
+
 
 }

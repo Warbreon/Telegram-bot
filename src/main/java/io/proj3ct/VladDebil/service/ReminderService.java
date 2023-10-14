@@ -1,7 +1,7 @@
 package io.proj3ct.VladDebil.service;
 
-import io.proj3ct.VladDebil.model.Reminder;
-import io.proj3ct.VladDebil.model.ReminderRepository;
+import io.proj3ct.VladDebil.model.entity.Reminder;
+import io.proj3ct.VladDebil.model.repository.ReminderRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;

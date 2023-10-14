@@ -1,4 +1,4 @@
-package io.proj3ct.VladDebil.model;
+package io.proj3ct.VladDebil.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,6 +1,6 @@
 <configuration>
 
-    <property name="HOMO_LOG" value="/var/log/proj3ct.io/tg-bot/warbreonBot.log"/>
+    <property name="HOME_LOG" value="/var/log/proj3ct.io/tg-bot/warbreonBot.log"/>
 
     <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <file>${HOME_LOG}</file>
