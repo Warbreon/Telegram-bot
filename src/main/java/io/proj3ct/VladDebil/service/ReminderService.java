@@ -2,7 +2,6 @@ package io.proj3ct.VladDebil.service;
 
 import io.proj3ct.VladDebil.model.entity.Reminder;
 import io.proj3ct.VladDebil.model.repository.ReminderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +10,13 @@ import java.util.List;
 @Service
 public class ReminderService {
 
-    @Autowired
-    private ReminderRepository reminderRepository;
-    @Autowired
-    private TelegramBot telegramBot;
+    private final ReminderRepository reminderRepository;
+    private final TelegramBot telegramBot;
+
+    public ReminderService(ReminderRepository reminderRepository, TelegramBot telegramBot){
+        this.reminderRepository = reminderRepository;
+        this.telegramBot = telegramBot;
+    }
 
     @Scheduled(fixedRate = 60000)
     public void checkAndSendReminders(){

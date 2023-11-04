@@ -54,7 +54,8 @@ public class Reminder {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reminder reminder = (Reminder) o;
-        return Objects.equals(id, reminder.id) && Objects.equals(textToRemind, reminder.textToRemind) && Objects.equals(reminderTime, reminder.reminderTime) && Objects.equals(user, reminder.user);
+        return Objects.equals(id, reminder.id) && Objects.equals(textToRemind, reminder.textToRemind)
+                && Objects.equals(reminderTime, reminder.reminderTime) && Objects.equals(user, reminder.user);
     }
 
     @Override

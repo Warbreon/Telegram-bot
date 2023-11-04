@@ -1,13 +1,10 @@
 package io.proj3ct.VladDebil.service;
 
 import io.proj3ct.VladDebil.config.BotConfig;
-import io.proj3ct.VladDebil.model.entity.Reminder;
-import io.proj3ct.VladDebil.model.entity.User;
-import io.proj3ct.VladDebil.model.repository.ReminderRepository;
-import io.proj3ct.VladDebil.model.repository.UserRepository;
+import io.proj3ct.VladDebil.service.commands.RemindCommandHandler;
+import io.proj3ct.VladDebil.service.commands.RemindViewerCommandHandler;
 import io.proj3ct.VladDebil.service.commands.StartCommandHandler;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
@@ -17,37 +14,35 @@ import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScopeDefault;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Component
 public class TelegramBot extends TelegramLongPollingBot {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private ReminderRepository reminderRepository;
-    @Autowired
-    private StartCommandHandler startCommandHandler;
-    private final Map<Long, ReminderState> userStateMap = new HashMap<>();
-    private final Map<Long, String> userReminderTextMap = new HashMap<>();
+    private final StartCommandHandler startCommandHandler;
+    private final RemindCommandHandler remindCommandHandler;
+    private final RemindViewerCommandHandler remindViewerCommandHandler;
+//    private final RemindDeleterCommandHandler remindDeleterCommandHandler;
     final BotConfig config;
 //    private final Map<String, CommandHandler> commandHandlerMap = new HashMap<>();
 //    commandHandlerMap.put("/start", new StartCommandHandler());
 //    commandHandlerMap.put("/r", new ReminderCommandHandler());
 
-    public TelegramBot(BotConfig config) {
+    public TelegramBot(StartCommandHandler startCommandHandler, RemindCommandHandler remindCommandHandler,
+                       RemindViewerCommandHandler remindViewerCommandHandler, BotConfig config) {
+        this.startCommandHandler = startCommandHandler;
+        this.remindCommandHandler = remindCommandHandler;
+        this.remindViewerCommandHandler = remindViewerCommandHandler;
         this.config = config;
+
         List<BotCommand> commandList = new ArrayList<>();
 
         commandList.add(new BotCommand("/start", "вывод приветственного сообщения"));
-        commandList.add(new BotCommand("/r", "напомнить о чем-то. формат: /r сообщение; dd.MM.yyyy HH:mm"));
+        commandList.add(new BotCommand("/r", "напомнить о чем-то"));
+        commandList.add(new BotCommand("/viewmyreminds", "показать мои напоминания"));
+        commandList.add(new BotCommand("/delete", "удалить напоминание по айди"));
 
         try {
             this.execute(new SetMyCommands(commandList, new BotCommandScopeDefault(), null));
@@ -73,81 +68,45 @@ public class TelegramBot extends TelegramLongPollingBot {
             String messageText = update.getMessage().getText();
             long chatId = update.getMessage().getChatId();
 
-            ReminderState currentState = userStateMap.get(chatId);
+            ReminderState currentState = remindCommandHandler.getUserStateMap(chatId);
 
             if (currentState == null) {
                 switch (messageText) {
                     case "/start":
                         SendMessage startMessage = startCommandHandler.handleCommand(update.getMessage());
-                        try {
-                            execute(startMessage);
-                        } catch (TelegramApiException e) {
-                            log.error("Error occurred while executing start message: " + e.getMessage());
-                        }
+                        executeCommand(startMessage, "start message");
                         break;
+
                     case "/r":
-                        userStateMap.put(chatId, ReminderState.AWAITING_TEXT);
-                        remindCommandReceived(chatId, messageText);
+                        SendMessage remindMessage = remindCommandHandler.handleCommand(update.getMessage());
+                        executeCommand(remindMessage, "remind message");
                         break;
+
                     case "спасибо":
                         sendMessage(chatId, "Не за что!");
+                        break;
+
+                    case "/viewmyreminds":
+                        SendMessage remindersListMessage = remindViewerCommandHandler.handleCommand(update.getMessage());
+                        executeCommand(remindersListMessage, "remind viewer message");
+                        break;
+
+//                    case "/delete":
+//                        SendMessage reminderDeleteMessage = remindDeleterCommandHandler.handleCommand(update.getMessage());
+//                        executeCommand(reminderDeleteMessage, "delete reminder");
+//                        break;
+
+                    default:
+                        break;
                 }
             } else {
-                remindCommandReceived(chatId, messageText);
+                SendMessage remindMessage = remindCommandHandler.handleCommand(update.getMessage());
+                executeCommand(remindMessage, "remind message");
             }
 
-        }
-
-    }
-
-    private void remindCommandReceived(long chatId, String message) {
-        ReminderState currentState = userStateMap.get(chatId);
-
-        switch (currentState) {
-            case AWAITING_TEXT:
-                userStateMap.put(chatId, ReminderState.AWAITING_DATE);
-                sendMessage(chatId, "Введите текст напоминания.");
-                break;
-            case AWAITING_DATE:
-                userReminderTextMap.put(chatId, message);
-                sendMessage(chatId, "Введите дату и время когда вам напомнить в формате dd.MM.yyyy HH:mm");
-                userStateMap.put(chatId, ReminderState.AWAITING_CONFIRMATION);
-                break;
-            case AWAITING_CONFIRMATION:
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-                LocalDateTime dateTime;
-
-                try {
-                    dateTime = LocalDateTime.parse(message, formatter);
-
-                    User user  = userRepository.findById(chatId).orElse(null);
-
-                    if(user != null) {
-                        //Hibernate.initialize(user.getReminderList());
-
-                        Reminder reminder = new Reminder();
-                        reminder.setUser(user);
-                        reminder.setTextToRemind(userReminderTextMap.get(chatId));
-                        reminder.setReminderTime(dateTime);
-
-                        user.addReminder(reminder);
-
-                        reminderRepository.save(reminder);
-                    }
-
-                    userStateMap.put(chatId, ReminderState.COMPLETED);
-
-                    log.info("User " + chatId + " asked to remind him " + userReminderTextMap.get(chatId) + " on " + dateTime);
-
-                    userReminderTextMap.remove(chatId);
-                    userStateMap.remove(chatId);
-
-                    sendMessage(chatId, "Хорошо, я напомню вам об этом......");
-
-                } catch (DateTimeParseException e) {
-                    sendMessage(chatId, "Неверный формат даты, надо ввести дату в формате dd.MM.yyyy HH:mm");
-                }
-                break;
+        } else if (update.hasCallbackQuery()) {
+            SendMessage callbackResponse = remindCommandHandler.handleCallbackQuery(update.getCallbackQuery());
+            executeCommand(callbackResponse, "callback response");
         }
 
     }
@@ -165,6 +124,15 @@ public class TelegramBot extends TelegramLongPollingBot {
             execute(message);
         } catch (TelegramApiException e) {
             log.error("Error occurred: " + e.getMessage());
+        }
+    }
+
+    private void executeCommand(SendMessage message, String messageRelatedTo){
+        try {
+            execute(message);
+            log.info("Executed {} command: {}", messageRelatedTo, message.getText());
+        } catch (TelegramApiException e) {
+            log.error("Error occurred while executing " + messageRelatedTo + ": " + e.getMessage());
         }
     }
 
